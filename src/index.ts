@@ -1,10 +1,12 @@
 import express from "express";
+import pool from "./config/database"
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 12000;
 
-app.get("/", (req, res) => {
-    res.send("Hello, TypeScript");
+app.get("/", async (req, res) => {
+    const result = await pool.query("SELECT NOW()");
+    res.send(result.rows);
 });
 
 app.listen(PORT, () => {
