@@ -50,7 +50,8 @@ CREATE TABLE exam_schedules (
 CREATE TABLE users_qualifications (
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
     qualification_id INT REFERENCES qualifications(qualification_id) ON DELETE CASCADE,
-    PRIMARY KEY (user_id, qualification_id) -- 重複データを防ぐために.
+    PRIMARY KEY (user_id, qualification_id), -- 重複データを防ぐために.
+    goal_score INT DEFAULT NULL -- 目標スコア（NULLなら通常の合格/不合格）
 );
 
 -- qualification_learning_toolsテーブル（中間テーブル）
