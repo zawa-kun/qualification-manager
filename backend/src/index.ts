@@ -1,9 +1,15 @@
 import express from "express";
 import pool from "./config/database";
-
+import authRoutes from "./routes/authRoutes";
 
 const app = express();
-const PORT = 12000;
+const PORT = 12000; //ポート番号.
+
+//ミドルウェアの設定.
+app.use(express.json());
+
+//ルーティング設定.
+app.use("/api/auth", authRoutes);
 
 app.get("/", async (req: any, res: any) => {
     const result = await pool.query("SELECT NOW()");
