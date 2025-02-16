@@ -6,6 +6,10 @@ export interface RegisterUserRequest {
 export interface AuthUserResponse {
     id: number;
     email: string;
-    created_at: DataTransfer;
+    createdAt: DataTransfer;
     token: string; // JWTトークン.
+}
+
+export interface AuthError {
+    message: string;
 }
